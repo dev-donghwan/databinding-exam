@@ -18,12 +18,15 @@ class MainActivity : AppCompatActivity() {
         //binding = ActivityMainBinding.inflate(layoutInflater)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.activity = this@MainActivity
-        binding.user = User("donghwan", ObservableField("0"))
+        binding.user = User("donghwan", "0")
     }
 
-    fun onButtonClick(user: User, age: String) {
-        user.age = ObservableField(age)
-        showToast(age)
+    fun ageChange(user: User, age: String) {
+        user.age.set(age)
+    }
+
+    fun showInformation(user: User) {
+        showToast("${user.name}의 나이는 ${user.age.get()}")
     }
 
     private fun showToast(msg: String) {

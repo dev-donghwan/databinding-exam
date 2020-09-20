@@ -22,50 +22,46 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <TextView
-            android:id="@+id/tv_printing"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{user.age}"
-            android:textSize="50dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <LinearLayout
+            android:id="@+id/container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_printing">
+            app:layout_constraintTop_toTopOf="parent">
 
             <Button
                 android:id="@+id/btn_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick='@{(view)->activity.onButtonClick(user,"1")}'
-                android:text="1" />
+                android:onClick='@{()->activity.ageChange(user,"1")}'
+                android:text="age change 1" />
 
             <Button
                 android:id="@+id/btn_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick='@{()->activity.onButtonClick(user,"2")}'
-                android:text="2" />
+                android:onClick='@{()->activity.ageChange(user,"2")}'
+                android:text="age change 2" />
 
             <Button
                 android:id="@+id/btn_three"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick='@{(view)->activity.onButtonClick(user,"3")}'
-                android:text="3" />
-
-
+                android:onClick='@{()->activity.ageChange(user,"3")}'
+                android:text="age change 3" />
         </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->activity.showInformation(user)}"
+            android:text="show user information"
+            app:layout_constraintTop_toBottomOf="@id/container" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
